@@ -1,0 +1,22 @@
+# Instala o módulo pyodbc
+!pip install pyodbc
+
+import pyodbc
+
+# Cria uma conexão com o banco de dados Access
+conn = pyodbc.connect(r"Driver={Microsoft Access Driver (*.mdb, *.accdb)};"
+                      r"DBQ=C:\mydatabase.accdb;")
+
+import pandas as pd
+
+# Carrega um DataFrame do Pandas
+df = pd.read_csv("mydata.csv")
+
+# Grava o DataFrame no banco de dados
+df.to_sql("mytable", conn, if_exists="replace")
+
+# Salva as alterações no banco de dados
+conn.commit()
+
+# Fecha a conexão
+conn.close()
