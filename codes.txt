@@ -1,3 +1,5 @@
+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
+
 # Instala o módulo pyodbc
 !pip install pyodbc
 
